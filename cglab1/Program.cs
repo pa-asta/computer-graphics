@@ -1,5 +1,5 @@
 ﻿#region Директивы using (подключаемые библиотеки) и точка входа приложения
-//#define UseOpenGL // Раскомментировать для использования OpenGL
+
 #if (!UseOpenGL)
 using Device     = CGLabPlatform.GDIDevice;
 using DeviceArgs = CGLabPlatform.GDIDeviceUpdateArgs;
@@ -187,10 +187,8 @@ public abstract class Application : CGApplication
     private void DrawLabel(DVector2 value, DVector2 point, double scale, DeviceArgs e) 
     {
         var label = value.X != 0 ? value.X + "(x)" : -value.Y + "(y)";
-        var size = scale / 10;
-        int fontSize = size > 10 ? (int)size : 10;
 
-        e.Graphics.DrawString(label, new Font("Arial", fontSize), Brushes.Black, point.X, point.Y);
+        e.Graphics.DrawString(label, new Font("Arial", 9), Brushes.Black, point.X, point.Y);
     }
 
     private void DrawDot(DVector2 p, int radius, Brush brush, DeviceArgs e) {
